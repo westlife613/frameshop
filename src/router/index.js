@@ -46,6 +46,7 @@ export default new Router({
           component:Cart,
           name:'Cart'
         }
+
       ]
 
     }
