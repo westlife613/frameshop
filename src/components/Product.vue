@@ -13,22 +13,43 @@
           <div class="pl-6">
             <p class="display-1 mb-0">Custom Frame Design</p>
             <v-card-actions class="pa-0">
-              <p class="headline font-weight-light pt-3">$65.00 <del style="" class="subtitle-1 font-weight-thin">$80.00</del></p>
+
               <v-spacer></v-spacer>
               <v-rating v-model="rating" class="" background-color="warning lighten-3"
                         color="warning" dense></v-rating>
-              <span class="body-2	font-weight-thin"> 25 REVIEWS</span>
+
             </v-card-actions>
 
 
 
-           <div id="dimensions-column" class="column"><div class="dimensions__sizing"><div class="field is-grouped is-horizontal" style="align-items: center;"><h4 class="field-label">Printing (Optional)</h4> <div id="uploads-column" class="field-body"><div can_preview="true"><button class="UserGallery---gallery-button---2D-Q__0"><span class="UserGallery---gallery-button-text---3J1Gr_0"><i class="fa fa-2x fa-cloud-upload"></i> <span> Upload Image</span></span> <!----></button> <!----> <div class="UserGallery---background---1qw8i_0 UserGallery---flex-center---2qWAQ_0" style="display: none;"><div class="UserGallery---window---1afFM_0"><div class="UserGallery---main-content---ZoGYU_0"><label class="UserGallery---drop-zone-container---2zveP_0 UserGallery---flex-center---2qWAQ_0"><input type="file" accept="image/png, image/jpeg, image/bmp, image/x-windows-bmp, image/tiff, image/gif" multiple="multiple" style="display: none;"> <span class="UserGallery---drop-zone---2BWho_0 UserGallery---flex-center---2qWAQ_0"><i class="fa fa-cloud-upload fa-5x UserGallery---icon---3Oo-V_0"></i> <span class="UserGallery---drop-zone-text-container---b110L_0 UserGallery---flex-center---2qWAQ_0"><span>Drag an image or click to begin uploading</span> <span>Accepted file types: JPG TIFF PNG BMP</span> <span>Max file size: 1.76 gb</span> <span>For larger files or other formats, contact us</span></span></span></label> <!----> <div class="UserGallery---ready-files---BEiMf_0"><h2 class="UserGallery---title---3mVIL_0">
+           <div id="dimensions-column" class="column">
+           <div class="dimensions__sizing">
+           <div class="field is-grouped is-horizontal" style="align-items: center;">
+           <h4 class="field-label">Printing (Optional)</h4>
+           <div id="uploads-column" class="field-body">
+           <div can_preview="true">
+           <button class="UserGallery---gallery-button---2D-Q__0">
+           <span class="UserGallery---gallery-button-text---3J1Gr_0">
+           <i class="fa fa-2x fa-cloud-upload"></i>
+           <span> Upload Image</span>
+           </span>
+            <!---->
+            </button>
+            <!---->
+            <div class="UserGallery---background---1qw8i_0 UserGallery---flex-center---2qWAQ_0" style="display: none;">
+            <div class="UserGallery---window---1afFM_0">
+            <div class="UserGallery---main-content---ZoGYU_0">
+
+            <!---->
+               <div class="UserGallery---ready-files---BEiMf_0">
+               <h2 class="UserGallery---title---3mVIL_0">
             Saved Images
 
             <!----></h2> <p class="UserGallery---no-saved-images-message---3VL7e_0">
             You have no saved images.
           </p></div></div> <div class="UserGallery---close-button---2t6r9_0"><i class="fa fa-times"></i> Close Gallery
-      </div></div></div></div> <!----></div></div> <div class="field is-grouped is-horizontal" style="align-items: center;"><h4 class="field-label">Units</h4> <div class="field-body"><div class="field is-grouped" style="align-items: center;"><label class="material-radio"><input value="cm" type="radio" aria-label="Use centimetres"> <span class="outer"><span class="inner"></span></span> <span class="material-radio__label">cm</span></label> <label class="material-radio"><input value="inch" type="radio" aria-label="Use inches"> <span class="outer"><span class="inner"></span></span> <span class="material-radio__label">inch</span></label></div></div></div> <div class="field is-grouped is-horizontal dimensions__size" style="align-items: flex-start;"><h4 class="field-label">Image Size</h4> <div class="field-body" style="flex-direction: column;"><div><div class="field is-grouped"><div class="columns" style="width: 100%;"><div class="column" style="display: flex;"><div class="field"><label class="label"> WIDTH </label> <div class="control"><input type="number" step="0.1" aria-label="Image width" min="1" max="999.99"></div></div> <span class="mid">×</span> <div class="field"><label class="label">HEIGHT</label> <div class="control"><input type="number" step="0.1" aria-label="Image height" min="1" max="999.99"></div></div> <span class="mid">inch</span></div> <div class="column" style="display: flex; align-items: flex-end;"><div class="select is-fullwidth"><select><option value="">Standard Sizes</option> <option value="[object Object]">
+      </div></div></div></div> <!----></div></div> <div class="field is-grouped is-horizontal" style="align-items: center;"><h4 class="field-label">Units</h4> <div class="field-body"><div class="field is-grouped" style="align-items: center;"><label class="material-radio">
+      <input value="cm" type="radio" aria-label="Use centimetres"> <span class="outer"><span class="inner"></span></span> <span class="material-radio__label">cm</span></label> <label class="material-radio"><input value="inch" type="radio" aria-label="Use inches"> <span class="outer"><span class="inner"></span></span> <span class="material-radio__label">inch</span></label></div></div></div> <div class="field is-grouped is-horizontal dimensions__size" style="align-items: flex-start;"><h4 class="field-label">Image Size</h4> <div class="field-body" style="flex-direction: column;"><div><div class="field is-grouped"><div class="columns" style="width: 100%;"><div class="column" style="display: flex;"><div class="field"><label class="label"> WIDTH </label> <div class="control"><input type="number" step="0.1" aria-label="Image width" min="1" max="999.99"></div></div> <span class="mid">×</span> <div class="field"><label class="label">HEIGHT</label> <div class="control"><input type="number" step="0.1" aria-label="Image height" min="1" max="999.99"></div></div> <span class="mid">inch</span></div> <div class="column" style="display: flex; align-items: flex-end;"><div class="select is-fullwidth"><select><option value="">Standard Sizes</option> <option value="[object Object]">
                           4" x 6" (10.2 x 15.2 cm)
                         </option><option value="[object Object]">
                           5" x 7" (12.7 x 17.8 cm)
@@ -75,7 +96,9 @@
             ></v-text-field>
 
             <v-btn class="primary white--text" outlined tile dense><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
-            <v-btn class="ml-4" outlined tile>ADD TO WISHLIST</v-btn>
+            <v-btn class="ml-4" @click="getFrame">GET FRAME</v-btn>
+             <v-btn class="ml-4" @click="getColor">GET COLOR</v-btn>
+             <v-btn class="ml-4" @click="priceCal">PRICE CALCULATE</v-btn>
 
           </div>
 
@@ -124,8 +147,12 @@
   </div>
 </template>
 <script>
+import {
+		getColor,priceCalculate
+	} from '@/api/product.js';
     export default {
         data: () => ({
+
             rating:4.5,
             breadcrums: [
                 {
@@ -181,7 +208,22 @@
               const file = e.target.files[0]
               this.image = file
               this.imageUrl = URL.createObjectURL(file)
+            },
+            getColor(){},
+            priceCal(){
+            let param={
+              "productType":2,
+              "surfaceTypeId": 0,
+              "framing": 0,
+              "stretch": 0,
+              "width": 8,
+              "height": 10,
+              "unit": "inch"
+
             }
-          }
-    }
+            priceCalculate(param)
+            }
+
+
+    }}
 </script>

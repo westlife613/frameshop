@@ -7,6 +7,7 @@ import Blog from '@/components/Blog'
 import Post from '@/components/Post'
 import Cart from '@/components/Cart'
 import Layout from '@/components/Layout'
+import Gallery from '@/components/Gallery'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
           path:'/cart',
           component:Cart,
           name:'Cart'
+        },
+        {
+          path:'/gallery',
+          component:Gallery,
+          name: 'Gallery'
         }
 
       ]

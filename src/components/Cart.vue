@@ -108,7 +108,7 @@
             </template>
           </v-simple-table>
           <div class="text-center">
-            <v-btn class="primary white--text mt-5" outlined>PROCEED TO PAY</v-btn>
+            <v-btn  @click="submit">PROCEED TO PAY</v-btn>
           </div>
         </v-col>
       </v-row>
@@ -122,8 +122,7 @@
                 <v-icon class="display-2">mdi-truck</v-icon>
               </v-col>
               <v-col class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">FREE SHIPPING & RETURN</h3>
-                <p class="font-weight-thin">Free Shipping over $300</p>
+
               </v-col>
             </v-row>
           </v-col>
@@ -133,8 +132,7 @@
                 <v-icon class="display-2">mdi-cash-usd</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">MONEY BACK GUARANTEE</h3>
-                <p class="font-weight-thin">30 Days Money Back Guarantee</p>
+
               </v-col>
             </v-row>
           </v-col>
@@ -144,8 +142,7 @@
                 <v-icon class="display-2">mdi-headset</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">020-800-456-747</h3>
-                <p class="font-weight-thin">24/7 Available Support</p>
+
               </v-col>
             </v-row>
           </v-col>
@@ -155,27 +152,101 @@
   </div>
 </template>
 <script>
+import {
+		generateOrder
+	} from '@/api/order.js';
     export default {
-        data: () => ({
-            rating: 4.5,
-            breadcrums: [
-                {
-                    text: 'Home',
-                    disabled: false,
-                    href: 'breadcrumbs_home',
-                },
-                {
-                    text: 'Clothing',
-                    disabled: false,
-                    href: 'breadcrumbs_clothing',
-                },
-                {
-                    text: 'T-Shirts',
-                    disabled: true,
-                    href: 'breadcrumbs_shirts',
-                },
-            ],
-        })
+        data() {
+        return{
+                       totalAmount: 150.00,
+                       comment: "This is a test order",
+                       receiverPhone: "1234567890",
+                       receiverName: "John Doe",
+                       receiverAddress: "123 Main Street",
+                       cartProducts: [
+                         {
+                           productId: 1,
+                           quantity: 2,
+                           productAttribute: {
+                             color: "red",
+                             size: "large"
+                           },
+                           productPic: "这里是图片名字",
+                           isFromGallery: "1",
+                           price: 50.00
+                         },
+                         {
+                           productId: 2,
+                           quantity: 1,
+                           productAttribute: {
+                             color: "blue",
+                             size: "medium"
+                           },
+                           productPic: "这里是图片id,应该已经返回给前端了",
+                           isFromGallery: "0",
+                           price: 30.00
+                         }
+                       ]
+                     }
+                     },
+
+methods: {
+submit() {
+let orderParam ={
+ totalAmount: 150.00,
+                       comment: "This is a test order",
+                       receiverPhone: "1234567890",
+                       receiverName: "John Doe",
+                       receiverAddress: "123 Main Street",
+                       cartProducts: [
+                         {
+                           productId: 1,
+                           quantity: 2,
+                           productAttribute: {
+                             color: "red",
+                             size: "large"
+                           },
+                           productPic: "这里是图片名字",
+                           isFromGallery: "1",
+                           price: 50.00
+                         },
+                         {
+                           productId: 2,
+                           quantity: 1,
+                           productAttribute: {
+                             color: "blue",
+                             size: "medium"
+                           },
+                           productPic: "这里是图片id,应该已经返回给前端了",
+                           isFromGallery: "0",
+                           price: 30.00
+                         }
+                       ]
+}
+generateOrder(orderParam).then(response => {
+					let orderId = response.data.order.id;
+					uni.showModal({
+						title: '提示',
+						content: '订单创建成功，是否要立即支付？',
+						confirmText:'去支付',
+						cancelText:'取消',
+						success: function(res) {
+							if (res.confirm) {
+								uni.redirectTo({
+									url: `/pages/money/pay?orderId=${orderId}`
+								})
+							} else if (res.cancel) {
+								console.log("cancel")
+								uni.redirectTo({
+									url: '/pages/order/order?state=0'
+								})
+							}
+						}
+					});
+				});
+},
+
+    }
     }
 </script>
 
