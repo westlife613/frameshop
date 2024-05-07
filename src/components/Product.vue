@@ -148,60 +148,14 @@
 </template>
 <script>
 import {
-		getColor,priceCalculate
+		getFrame,getColor,priceCalculate
 	} from '@/api/product.js';
+import axios, * as others from 'axios';
     export default {
         data: () => ({
 
-            rating:4.5,
-            breadcrums: [
-                {
-                    text: 'Home',
-                    disabled: false,
-                    href: 'breadcrumbs_home',
-                },
-                {
-                    text: 'FrameDIY',
-                    disabled: false,
-                    href: 'breadcrumbs_clothing',
-                },
-                {
-                    text: 'Printing',
-                    disabled: true,
-                    href: 'breadcrumbs_shirts',
-                },
-            ],
-            item: 5,
-            image: null,
-            imageUrl:null,
-            items: [
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                    title: 'Lorem ipsum dolor?',
-                    subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Tincidunt arcu non sodales neque sodales ut etiam. Lectus arcu bibendum at varius vel pharetra. Morbi tristique senectus et netus et malesuada.\n" +
-                        "\n",
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                    title: 'Lorem ipsum dolor <span class="grey--text text--lighten-1">4</span>',
-                    subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                    title: 'Lorem ipsum dolor',
-                    subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-                    title: 'Lorem ipsum dolor',
-                    subtitle: ""
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-                    title: 'Lorem ipsum dolor',
-                    subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                },
-            ],
+
+
         }),
           methods: {
             onChange(e) {
@@ -209,19 +163,37 @@ import {
               this.image = file
               this.imageUrl = URL.createObjectURL(file)
             },
-            getColor(){},
+            getColor(){
+            },
             priceCal(){
-            let param={
-              "productType":2,
-              "surfaceTypeId": 0,
-              "framing": 0,
-              "stretch": 0,
-              "width": 8,
-              "height": 10,
-              "unit": "inch"
+          axios({
 
-            }
-            priceCalculate(param)
+                                method: 'post',
+                                url: 'http://localhost:8085/product/priceCalculate',
+
+                                data: {
+                                    "productType":2,
+
+                                      "surfaceTypeId": 0,
+
+                                      "framing": 0,
+                                      "stretch": 0,
+                                      "width": 8,
+                                      "height": 10,
+                                      "unit": "inch"
+
+                                },
+                                responseType: 'json'
+                            }).then(response => {
+
+                                _this.result = response.data.data.items
+                                _this.total = response.data.data.total
+                                console.log(response)
+                            }).catch(error => {
+
+                                console.log(error)
+                            });
+
             }
 
 
