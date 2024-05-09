@@ -21,35 +21,76 @@
             </v-card-actions>
 
 
+           <h4>productType: </h4>
+
+           <input type="radio" id="0" value="0" v-model="productType" />
+           <label for="photopaper">Photo paper</label>
+
+           <input type="radio" id="1" value="1" v-model="productType" />
+           <label for="Canvas">Canvas</label>
+           <input type="radio" id="2" value="2" v-model="productType" />
+                      <label for="FineArtPaper">Fine art paper</label>
+           <h4>Framing:</h4>
+
+                                 <input type="radio" id="1" value="1" v-model="framing" />
+                                 <label for="Yes">Yes</label>
+
+                                 <input type="radio" id="0" value="0" v-model="framing" />
+                                 <label for="No">No</label>
+           <h4>Surface Type:</h4>
+
+                                 <input type="radio" id="0" value="0" v-model="surfaceTypeId" />
+                                 <label for="METALLIC">Metallic</label>
+
+                                 <input type="radio" id="1" value="1" v-model="surfaceTypeId" />
+                                 <label for="MATTE_SMOOTH">Matte Smooth</label>
+           <div style="font-weight: bold;">Stretch:  </div>
+
+                                 <input type="radio" id="1" value="1" v-model="stretch" />
+                                 <label for="Yes">Yes</label>
+
+                                 <input type="radio" id="0" value="0" v-model="stretch" />
+                                 <label for="No">No</label>
+
+           <h4>Units:</h4>
+
+                                 <input type="radio" id="1" value="cm" v-model="unit" />
+                                 <label for="cm">cm</label>
+
+                                 <input type="radio" id="2" value="inch" v-model="unit" />
+                                 <label for="inch">inch</label>
 
            <div id="dimensions-column" class="column">
            <div class="dimensions__sizing">
-           <div class="field is-grouped is-horizontal" style="align-items: center;">
-           <h4 class="field-label">Printing (Optional)</h4>
-           <div id="uploads-column" class="field-body">
-           <div can_preview="true">
-           <button class="UserGallery---gallery-button---2D-Q__0">
-           <span class="UserGallery---gallery-button-text---3J1Gr_0">
-           <i class="fa fa-2x fa-cloud-upload"></i>
-           <span> Upload Image</span>
-           </span>
-            <!---->
-            </button>
-            <!---->
-            <div class="UserGallery---background---1qw8i_0 UserGallery---flex-center---2qWAQ_0" style="display: none;">
-            <div class="UserGallery---window---1afFM_0">
-            <div class="UserGallery---main-content---ZoGYU_0">
 
-            <!---->
-               <div class="UserGallery---ready-files---BEiMf_0">
-               <h2 class="UserGallery---title---3mVIL_0">
-            Saved Images
 
-            <!----></h2> <p class="UserGallery---no-saved-images-message---3VL7e_0">
-            You have no saved images.
-          </p></div></div> <div class="UserGallery---close-button---2t6r9_0"><i class="fa fa-times"></i> Close Gallery
-      </div></div></div></div> <!----></div></div> <div class="field is-grouped is-horizontal" style="align-items: center;"><h4 class="field-label">Units</h4> <div class="field-body"><div class="field is-grouped" style="align-items: center;"><label class="material-radio">
-      <input value="cm" type="radio" aria-label="Use centimetres"> <span class="outer"><span class="inner"></span></span> <span class="material-radio__label">cm</span></label> <label class="material-radio"><input value="inch" type="radio" aria-label="Use inches"> <span class="outer"><span class="inner"></span></span> <span class="material-radio__label">inch</span></label></div></div></div> <div class="field is-grouped is-horizontal dimensions__size" style="align-items: flex-start;"><h4 class="field-label">Image Size</h4> <div class="field-body" style="flex-direction: column;"><div><div class="field is-grouped"><div class="columns" style="width: 100%;"><div class="column" style="display: flex;"><div class="field"><label class="label"> WIDTH </label> <div class="control"><input type="number" step="0.1" aria-label="Image width" min="1" max="999.99"></div></div> <span class="mid">×</span> <div class="field"><label class="label">HEIGHT</label> <div class="control"><input type="number" step="0.1" aria-label="Image height" min="1" max="999.99"></div></div> <span class="mid">inch</span></div> <div class="column" style="display: flex; align-items: flex-end;"><div class="select is-fullwidth"><select><option value="">Standard Sizes</option> <option value="[object Object]">
+       <div class="field is-grouped is-horizontal dimensions__size" style="align-items: flex-start;">
+       <h4 class="field-label">Image Size</h4>
+       <div class="field-body" style="flex-direction: column;">
+       <div>
+       <div class="field is-grouped">
+       <div class="columns" style="width: 100%;">
+       <div class="column" style="display: flex;">
+       <div class="field">
+       <label class="label"> WIDTH </label>
+       <div class="control">
+       <input type="number" step="0.1" aria-label="Image width" min="1" max="999.99">
+       </div>
+       </div>
+       <span class="mid">×</span>
+       <div class="field">
+       <label class="label">HEIGHT</label>
+        <div class="control">
+        <input type="number" step="0.1" aria-label="Image height" min="1" max="999.99">
+        </div>
+        </div>
+        <span class="mid">inch</span>
+        </div>
+        <div class="column" style="display: flex; align-items: flex-end;">
+        <div class="select is-fullwidth">
+        <select>
+        <option value="">Standard Sizes</option>
+        <option value="[object Object]">
                           4" x 6" (10.2 x 15.2 cm)
                         </option><option value="[object Object]">
                           5" x 7" (12.7 x 17.8 cm)
@@ -153,8 +194,11 @@ import {
 import axios, * as others from 'axios';
     export default {
         data: () => ({
-
-
+            productType: '',
+            unit:'',
+            framing:'',
+            surfaceTypeId:'',
+            stretch:'',
 
         }),
           methods: {
@@ -172,15 +216,15 @@ import axios, * as others from 'axios';
                                 url: 'http://localhost:8085/product/priceCalculate',
 
                                 data: {
-                                    "productType":2,
+                                    productType:this.productType,
 
-                                      "surfaceTypeId": 0,
+                                      "surfaceTypeId": this.surfaceTypeId,
 
-                                      "framing": 0,
-                                      "stretch": 0,
+                                      "framing": this.framing,
+                                      "stretch": this.stretch,
                                       "width": 8,
                                       "height": 10,
-                                      "unit": "inch"
+                                      "unit": this.unit
 
                                 },
                                 responseType: 'json'
@@ -199,3 +243,11 @@ import axios, * as others from 'axios';
 
     }}
 </script>
+
+<style>
+
+.custom-select {
+    border: 1px solid #000000; /* 黑色边框 */
+
+}
+</style>

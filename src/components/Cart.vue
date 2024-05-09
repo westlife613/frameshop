@@ -155,6 +155,7 @@
 import {
 		generateOrder
 	} from '@/api/order.js';
+	import axios, * as others from 'axios';
     export default {
         data() {
         return{
@@ -191,60 +192,70 @@ import {
                      },
 
 methods: {
-submit() {
-let orderParam ={
- totalAmount: 150.00,
-                       comment: "This is a test order",
-                       receiverPhone: "1234567890",
-                       receiverName: "John Doe",
-                       receiverAddress: "123 Main Street",
-                       cartProducts: [
-                         {
-                           productId: 1,
-                           quantity: 2,
-                           productAttribute: {
-                             color: "red",
-                             size: "large"
-                           },
-                           productPic: "这里是图片名字",
-                           isFromGallery: "1",
-                           price: 50.00
-                         },
-                         {
-                           productId: 2,
-                           quantity: 1,
-                           productAttribute: {
-                             color: "blue",
-                             size: "medium"
-                           },
-                           productPic: "这里是图片id,应该已经返回给前端了",
-                           isFromGallery: "0",
-                           price: 30.00
-                         }
-                       ]
-}
-generateOrder(orderParam).then(response => {
-					let orderId = response.data.order.id;
-					uni.showModal({
-						title: '提示',
-						content: '订单创建成功，是否要立即支付？',
-						confirmText:'去支付',
-						cancelText:'取消',
-						success: function(res) {
-							if (res.confirm) {
-								uni.redirectTo({
-									url: `/pages/money/pay?orderId=${orderId}`
-								})
-							} else if (res.cancel) {
-								console.log("cancel")
-								uni.redirectTo({
-									url: '/pages/order/order?state=0'
-								})
-							}
-						}
-					});
-				});
-},
+submit(){
+          axios({
+
+                                method: 'post',
+                                url: 'http://localhost:8085/order/generateOrder',
+
+                                data:{
+                                         "totalAmount": 150.00,
+                                         "comment": "This is a test order",
+                                         "receiverPhone": "1234567890",
+                                         "receiverName": "John Doe",
+                                         "receiverAddress": "123 Main Street",
+                                         "cartProducts": [
+                                             {
+                                                 "quantity": "2",
+                                                 "productPic": "222A",
+                                                 "isFromGallery": "1",
+                                                 "price": 50.00,
+                                                 "productParam": {
+                                                     "productType": 2,
+                                                     //   3种产品，0:photo p，1：canvas,"2fap"
+                                                     "surfaceTypeId": 0,
+                                                     //   photo paper type : 0;luster,1:matte
+                                                     "framing": 0,
+                                                     "stretch": 0,
+                                                     "width": 8,
+                                                     "height": 10,
+                                                     "unit": "inch"
+                                                 },
+                                                 "note": "this is note"
+                                             },
+                                              {
+                                                 "quantity": "3",
+                                                 "productPic": "111B",
+                                                 "isFromGallery": "1",
+                                                 "price": 2.00,
+                                                 "productParam": {
+                                                     "productType": 1,
+                                                     //   3种产品，0:photo p，1：canvas,"2fap"
+                                                     "surfaceTypeId": 0,
+                                                     //   photo paper type : 0;luster,1:matte
+                                                     "framing": 0,
+                                                     "stretch": 0,
+                                                     "width": 8,
+                                                     "height": 10,
+                                                     "unit": "inch"
+                                                 },
+                                                 "note": "this is note"
+                                             }
+                                         ]
+                                     },
+
+                                responseType: 'json'
+                            }).then(response => {
+
+                                _this.result = response.data.data.items
+                                _this.total = response.data.data.total
+                                console.log(response)
+                            }).catch(error => {
+
+                                console.log(error)
+                            });
+
+            }
 
     }
     }
