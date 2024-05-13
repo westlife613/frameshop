@@ -36,6 +36,6 @@ export default {
 <style>
 .gallery {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* 多行布局，每行四个商品 */
 }
 </style>

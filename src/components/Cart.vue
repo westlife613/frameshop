@@ -1,263 +1,122 @@
 <template>
   <div>
-    <v-container>
+      <div class="row">
+        <!-- 第一列：产品信息 -->
+        <div class="col-md-4 text-center" >
+          <h3>Cart Items</h3>
 
-      <p class="display-3 font-weight-light	text-center pa-4">SHOPPING CART</p>
-      <v-row>
-        <v-col :cols="12" md="9" sm="12" >
-          <v-simple-table>
-            <template v-slot:default>
-              <thead>
-              <tr>
-                <th class="text-center">ITEM</th>
-                <th class="text-center">PRICE</th>
-                <th class="text-center">QUANTITY</th>
-                <th class="text-center">TOTAL</th>
-                <th class="text-center"></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <v-list-item
-                  key="1"
-                  @click=""
-                >
-                  <v-list-item-avatar>
-                    <v-img :src="require('../assets/img/shop/1.jpg')"></v-img>
-                  </v-list-item-avatar>
+        </div>
 
-                  <v-list-item-content>
-                    <v-list-item-title >Item 1</v-list-item-title>
-                    <v-list-item-subtitle>Lorem Ipsum</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item></td>
-                <td>$40.00</td>
-                <td>
-                  <v-text-field
-                    class="pt-10"
-                    label="Outlined"
-                    style="width: 80px;"
-                    single-line
-                    outlined
-                    value="2"
-                    type="number"
-                  ></v-text-field>
-                </td>
-                <td>$80.00</td>
-                <td><a>X</a></td>
-              </tr>
-              <tr>
-                <td>
-                  <v-list-item
-                  key="1"
-                  @click=""
-                >
-                  <v-list-item-avatar>
-                    <v-img :src="require('../assets/img/shop/2.jpg')"></v-img>
-                  </v-list-item-avatar>
+        <!-- 第二列：用户信息 -->
+        <div class="col-md-4 text-center" >
+          <h3>Guest Checkout</h3>
+          <v-text-field v-model="receiverName" label="Full name"></v-text-field>
+          <v-text-field v-model="email" label="Email Address"></v-text-field>
+          <v-text-field v-model="receiverAddress" label="Postal Address"></v-text-field>
+          <v-text-field v-model="receiverPhone" label="Phone Number"></v-text-field>
+          <v-text-field v-model="comment" label="Comment"></v-text-field>
+        </div>
 
-                  <v-list-item-content>
-                    <v-list-item-title >Item 2</v-list-item-title>
-                    <v-list-item-subtitle>Lorem Ipsum</v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item></td>
-                <td>$40.00</td>
-                <td>
-                  <v-text-field
-                    class="pt-10"
-                    label="Outlined"
-                    style="width: 80px;"
-                    single-line
-                    outlined
-                    value="2"
-                    type="number"
-                  ></v-text-field>
-                </td>
-                <td>$80.00</td>
-                <td><a>X</a></td>
-              </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-        </v-col>
-        <v-col :cols="12" md="3" sm="12" style="background-color: lightgray">
-          <p class="headline">Order Summary</p>
-          <p class="overline">Shipping and additional costs are calculated based on values you have entered.
-          </p>
-          <v-simple-table>
-            <template v-slot:default>
-              <tbody>
-              <tr>
-                <td>Order Subtotal</td>
-                <td class="text-right" style="width: 50px;">$160.00</td>
-              </tr>
-              <tr>
-                <td>Shipping Charges</td>
-                <td class="text-right" style="width: 50px;">$10.00</td>
-              </tr>
-              <tr>
-                <td>Tax</td>
-                <td class="text-right" style="width: 50px;">$5.00</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td class="text-right" style="width: 50px;"><b>$175.00</b></td>
-              </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-          <div class="text-center">
-            <v-btn  @click="submit">PROCEED TO PAY</v-btn>
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-card  class="accent" >
-      <v-container>
-        <v-row no-gutters>
-          <v-col class="col-12 col-md-4 col-sm-12">
-            <v-row >
-              <v-col class="col-12 col-sm-3 pr-4 hidden-sm-only" align="right">
-                <v-icon class="display-2">mdi-truck</v-icon>
-              </v-col>
-              <v-col class="col-12 col-sm-9 pr-4">
+        <!-- 第三列：支付信息 -->
+        <div class="col-md-4 text-center" >
+          <h3>Payment</h3>
 
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col class="col-12 col-md-4 col-sm-12">
-            <v-row >
-              <v-col class="col-12 col-sm-3 pr-4" align="right">
-                <v-icon class="display-2">mdi-cash-usd</v-icon>
-              </v-col>
-              <v-col  class="col-12 col-sm-9 pr-4">
-
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col class="col-12 col-md-4 col-sm-12">
-            <v-row>
-              <v-col class="col-12 col-sm-3 pr-4" align="right">
-                <v-icon class="display-2">mdi-headset</v-icon>
-              </v-col>
-              <v-col  class="col-12 col-sm-9 pr-4">
-
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
-  </div>
+          <p>Direct Deposit/Bank Transfer：</p>
+          <p>Account name:</p>
+          <p>Account number:</p>
+          <p>BSB:</p>
+          <v-btn @click="submit">Submit Order</v-btn>
+        </div>
+      </div>
+    </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import {
 		generateOrder
 	} from '@/api/order.js';
 	import axios, * as others from 'axios';
-    export default {
-        data() {
-        return{
-                       totalAmount: 150.00,
-                       comment: "This is a test order",
-                       receiverPhone: "1234567890",
-                       receiverName: "John Doe",
-                       receiverAddress: "123 Main Street",
-                       cartProducts: [
-                         {
-                           productId: 1,
-                           quantity: 2,
-                           productAttribute: {
-                             color: "red",
-                             size: "large"
-                           },
-                           productPic: "这里是图片名字",
-                           isFromGallery: "1",
-                           price: 50.00
-                         },
-                         {
-                           productId: 2,
-                           quantity: 1,
-                           productAttribute: {
-                             color: "blue",
-                             size: "medium"
-                           },
-                           productPic: "这里是图片id,应该已经返回给前端了",
-                           isFromGallery: "0",
-                           price: 30.00
-                         }
-                       ]
-                     }
-                     },
+	import eventBus from '@/eventBus.js'
+   export default {
+     data() {
+       return {
+         totalAmount: '',
+         comment: '',
+         receiverPhone: '',
+         receiverName: '',
+         receiverAddress: '',
+         cartProducts: [
+                                {
+                                    "quantity": "2",
+                                    "productPic": "222A",
+                                    "isFromGallery": "1",
+                                    "price": 50.00,
+                                    "productParam": {
+                                        "productType": 2,
+                                        //   3种产品，0:photo p，1：canvas,"2fap"
+                                        "surfaceTypeId": 0,
+                                        //   photo paper type : 0;luster,1:matte
+                                        "framing": 0,
+                                        "stretch": 0,
+                                        "width": 8,
+                                        "height": 10,
+                                        "unit": "inch"
+                                    },
+                                    "note": "this is note"
+                                },
+                                 {
+                                    "quantity": "3",
+                                    "productPic": "111B",
+                                    "isFromGallery": "1",
+                                    "price": 2.00,
+                                    "productParam": {
+                                        "productType": 1,
+                                        //   3种产品，0:photo p，1：canvas,"2fap"
+                                        "surfaceTypeId": 0,
+                                        //   photo paper type : 0;luster,1:matte
+                                        "framing": 0,
+                                        "stretch": 0,
+                                        "width": 8,
+                                        "height": 10,
+                                        "unit": "inch"
+                                    },
+                                    "note": "this is note"
+                                }
 
-methods: {
-submit(){
-          axios({
+]
+       };
+     },
+     computed: {
+        ...mapGetters([
+          'g',
+        ]),
+      },
 
-                                method: 'post',
-                                url: 'http://localhost:8085/order/generateOrder',
 
-                                data:{
-                                         "totalAmount": 150.00,
-                                         "comment": "This is a test order",
-                                         "receiverPhone": "1234567890",
-                                         "receiverName": "John Doe",
-                                         "receiverAddress": "123 Main Street",
-                                         "cartProducts": [
-                                             {
-                                                 "quantity": "2",
-                                                 "productPic": "222A",
-                                                 "isFromGallery": "1",
-                                                 "price": 50.00,
-                                                 "productParam": {
-                                                     "productType": 2,
-                                                     //   3种产品，0:photo p，1：canvas,"2fap"
-                                                     "surfaceTypeId": 0,
-                                                     //   photo paper type : 0;luster,1:matte
-                                                     "framing": 0,
-                                                     "stretch": 0,
-                                                     "width": 8,
-                                                     "height": 10,
-                                                     "unit": "inch"
-                                                 },
-                                                 "note": "this is note"
-                                             },
-                                              {
-                                                 "quantity": "3",
-                                                 "productPic": "111B",
-                                                 "isFromGallery": "1",
-                                                 "price": 2.00,
-                                                 "productParam": {
-                                                     "productType": 1,
-                                                     //   3种产品，0:photo p，1：canvas,"2fap"
-                                                     "surfaceTypeId": 0,
-                                                     //   photo paper type : 0;luster,1:matte
-                                                     "framing": 0,
-                                                     "stretch": 0,
-                                                     "width": 8,
-                                                     "height": 10,
-                                                     "unit": "inch"
-                                                 },
-                                                 "note": "this is note"
-                                             }
-                                         ]
-                                     },
+     methods: {
+       submit() {
+         axios({
+           method: 'post',
+           url: 'http://localhost:8085/order/generateOrder',
+           data: {
+             totalAmount: this.totalAmount,
+             comment: this.comment,
+             receiverPhone: this.receiverPhone,
+             receiverName: this.receiverName,
+             receiverAddress: this.receiverAddress,
+             cartProducts: this.cartProducts
 
-                                responseType: 'json'
-                            }).then(response => {
 
-                                _this.result = response.data.data.items
-                                _this.total = response.data.data.total
-                                console.log(response)
-                            }).catch(error => {
-
-                                console.log(error)
-                            });
-
-            }
-
-    }
-    }
-</script>
-
+           },
+           responseType: 'json'
+         }).then(response => {
+           // 处理服务器响应
+           console.log(response);
+         }).catch(error => {
+           // 处理错误
+           console.error(error);
+         });
+       }
+     }
+   };
+   </script>

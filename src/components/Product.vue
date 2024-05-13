@@ -3,151 +3,104 @@
     <v-container>
       <div class="row">
         <div class="col-md-5 col-sm-5 col-xs-12">
-          <input type="file" accept="image/*" @change="onChange" />
-           <div id="preview">
-             <img v-if="imageUrl" :src="imageUrl" width="220" height="320"/>
-           </div>
+          <div style="display: flex; align-items: center;">
+            <input type="file" accept="image/*" @change="onChange" />
+            <v-btn @click="openGalleryDialog">Choose from Gallery</v-btn>
+          </div>
+          <div id="preview">
+            <img v-if="imageUrl" :src="imageUrl" width="220" height="320"/>
+          </div>
         </div>
         <div class="col-md-7 col-sm-7 col-xs-12">
           <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
           <div class="pl-6">
             <p class="display-1 mb-0">Custom Frame Design</p>
             <v-card-actions class="pa-0">
-
               <v-spacer></v-spacer>
-              <v-rating v-model="rating" class="" background-color="warning lighten-3"
-                        color="warning" dense></v-rating>
-
+              <v-rating v-model="rating" class="" background-color="warning lighten-3" color="warning" dense></v-rating>
             </v-card-actions>
-
-
-           <h4>productType: </h4>
-
+           <h4>Product Type: </h4>
            <input type="radio" id="0" value="0" v-model="productType" />
            <label for="photopaper">Photo paper</label>
-
            <input type="radio" id="1" value="1" v-model="productType" />
            <label for="Canvas">Canvas</label>
            <input type="radio" id="2" value="2" v-model="productType" />
-                      <label for="FineArtPaper">Fine art paper</label>
+           <label for="FineArtPaper">Fine art paper</label>
            <h4>Framing:</h4>
-
-                                 <input type="radio" id="1" value="1" v-model="framing" />
-                                 <label for="Yes">Yes</label>
-
-                                 <input type="radio" id="0" value="0" v-model="framing" />
-                                 <label for="No">No</label>
+           <input type="radio" id="1" value="1" v-model="framing" />
+           <label for="Yes">Yes</label>
+           <input type="radio" id="0" value="0" v-model="framing" />
+           <label for="No">No</label>
            <h4>Surface Type:</h4>
-
-                                 <input type="radio" id="0" value="0" v-model="surfaceTypeId" />
-                                 <label for="METALLIC">Metallic</label>
-
-                                 <input type="radio" id="1" value="1" v-model="surfaceTypeId" />
-                                 <label for="MATTE_SMOOTH">Matte Smooth</label>
+           <input type="radio" id="0" value="0" v-model="surfaceTypeId" />
+           <label for="METALLIC">Metallic</label>
+           <input type="radio" id="1" value="1" v-model="surfaceTypeId" />
+           <label for="MATTE_SMOOTH">Matte Smooth</label>
            <div style="font-weight: bold;">Stretch:  </div>
-
-                                 <input type="radio" id="1" value="1" v-model="stretch" />
-                                 <label for="Yes">Yes</label>
-
-                                 <input type="radio" id="0" value="0" v-model="stretch" />
-                                 <label for="No">No</label>
-
-           <h4>Units:</h4>
-
-                                 <input type="radio" id="1" value="cm" v-model="unit" />
-                                 <label for="cm">cm</label>
-
-                                 <input type="radio" id="2" value="inch" v-model="unit" />
-                                 <label for="inch">inch</label>
-
+           <input type="radio" id="1" value="1" v-model="stretch" />
+           <label for="Yes">Yes</label>
+           <input type="radio" id="0" value="0" v-model="stretch" />
+           <label for="No">No</label>
            <div id="dimensions-column" class="column">
-           <div class="dimensions__sizing">
-
-
-       <div class="field is-grouped is-horizontal dimensions__size" style="align-items: flex-start;">
-       <h4 class="field-label">Image Size</h4>
-       <div class="field-body" style="flex-direction: column;">
-       <div>
-       <div class="field is-grouped">
-       <div class="columns" style="width: 100%;">
-       <div class="column" style="display: flex;">
-       <div class="field">
-       <label class="label"> WIDTH </label>
-       <div class="control">
-       <input type="number" step="0.1" aria-label="Image width" min="1" max="999.99">
-       </div>
-       </div>
-       <span class="mid">×</span>
-       <div class="field">
-       <label class="label">HEIGHT</label>
-        <div class="control">
-        <input type="number" step="0.1" aria-label="Image height" min="1" max="999.99">
-        </div>
-        </div>
-        <span class="mid">inch</span>
-        </div>
-        <div class="column" style="display: flex; align-items: flex-end;">
-        <div class="select is-fullwidth">
-        <select>
-        <option value="">Standard Sizes</option>
-        <option value="[object Object]">
-                          4" x 6" (10.2 x 15.2 cm)
-                        </option><option value="[object Object]">
-                          5" x 7" (12.7 x 17.8 cm)
-                        </option><option value="[object Object]">
-                          6" x 8" (15.2 x 20.3 cm)
-                        </option><option value="[object Object]">
-                          8" x 10" (20.3 x 25.4 cm)
-                        </option><option value="[object Object]">
-                          8" x 12" (20.3 x 30.5 cm)
-                        </option><option value="[object Object]">
-                          11" x 14" (27.9 x 35.6 cm)
-                        </option><option value="[object Object]">
-                          12" x 16" (30.5 x 40.6 cm)
-                        </option><option value="[object Object]">
-                          16" x 20" (40.6 x 50.8 cm)
-                        </option><option value="[object Object]">
-                          16" x 24" (40.6 x 61.0 cm)
-                        </option><option value="[object Object]">
-                          18" x 24" (45.6 x 61.0 cm)
-                        </option> <optgroup label="B"><option value="[object Object]">
-                            B1 (70.7 x 100.0 cm)
-                          </option><option value="[object Object]">
-                            B2 (50.0 x 70.7 cm)
-                          </option></optgroup> <optgroup label="A"><option value="[object Object]">
-                            A5 (14.8 x 21.0 cm)
-                          </option><option value="[object Object]">
-                            A4 (21.0 x 29.7 cm)
-                          </option><option value="[object Object]">
-                            A3 (29.7 x 42.0 cm)
-                          </option><option value="[object Object]">
-                            A2 (42.0 x 59.4 cm)
-                          </option><option value="[object Object]">
-                            A1 (59.4 x 84.1 cm)
-                          </option><option value="[object Object]">
-                            A0 (84.1 x 118.9 cm)
-                          </option></optgroup></select></div></div></div></div></div> <div class="size-help"><!----> <!----></div> <div class="" style="font-size: 1.2rem; transition: all 0.25s ease 0s; margin-bottom: 10px;">
-              Min: 3.9 x 3.9 inch, Max: 40 x 60 inch
-            </div></div></div></div></div>
-            <v-text-field
-                outlined
-                style="width:100px"
-                :value="1"
-                dense
-            ></v-text-field>
-
-            <v-btn class="primary white--text" outlined tile dense><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
+             <div class="dimensions__sizing">
+               <div>
+                 <h4> Unit:</h4>
+                 <input type="radio" id="cm" value="cm" v-model="unit">
+                 <label for="cm">cm</label>
+                 <input type="radio" id="inch" value="inch" v-model="unit">
+                 <label for="inch">inch</label>
+                 <h4>Image Size</h4>
+                 <div v-if="unit === 'cm'">
+                   <div>HEIGHT &nbsp&nbsp&nbsp&nbsp    WIDTH :</div>
+                   <input type="number" v-model="height" min="0" max="999" style="border: 1px solid black;">
+                   <label> X </label>
+                   <input type="number" v-model="width" min="0" max="999" style="border: 1px solid black;">
+                   <label>(cm)</label>
+                   <select v-model="selectedSize" @change="setSize">
+                     <option v-for="size in cmSizes" :value="size">{{ size }}</option>
+                   </select>
+                 </div>
+                 <div v-else>
+                   <div>HEIGHT &nbsp&nbsp&nbsp&nbsp    WIDTH :</div>
+                   <input type="number" v-model="height" min="0" max="999" style="border: 1px solid black;">
+                   <label> X </label>
+                   <input type="number" v-model="width" min="0" max="999" style="border: 1px solid black;">
+                   <label>(inch)</label>
+                   <select v-model="selectedSize" @change="setSize">
+                     <option v-for="size in inchSizes" :value="size">{{ size }}</option>
+                   </select>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div> <h4>Quantity</h4></div>
+            <v-text-field outlined style="width:100px" :value="1" dense></v-text-field>
+            <v-btn class="primary white--text" outlined tile dense @click="handleAddToCart"><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
             <v-btn class="ml-4" @click="getFrame">GET FRAME</v-btn>
              <v-btn class="ml-4" @click="getColor">GET COLOR</v-btn>
              <v-btn class="ml-4" @click="priceCal">PRICE CALCULATE</v-btn>
 
           </div>
-
-        </di>
+        </div>
       </div>
-      </div>
-
     </v-container>
+    <v-dialog v-model="galleryDialog" max-width="800">
+      <v-card>
+        <v-card-title>Gallery</v-card-title>
+        <v-card-text>
+          <div class="gallery">
+            <div v-for="(item, index) in galleryItems" :key="index" class="gallery-item">
+              <img :src="item.imageUrl" alt="Product Image" @click="selectImage(item)" :style="{ height: item.height + 'px', width: item.width + 'px' }">
+              <div>{{ item.price }}</div>
+              <v-btn @click="selectImage(item)">Select</v-btn>
+            </div>
+          </div>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="closeGalleryDialog">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-card  class="accent" >
       <v-container>
         <v-row no-gutters>
@@ -157,7 +110,6 @@
                 <v-icon class="display-2">mdi-truck</v-icon>
               </v-col>
               <v-col class="col-12 col-sm-9 pr-4">
-
               </v-col>
             </v-row>
           </v-col>
@@ -167,7 +119,6 @@
                 <v-icon class="display-2">mdi-cash-usd</v-icon>
               </v-col>
               <v-col  class="col-12 col-sm-9 pr-4">
-
               </v-col>
             </v-row>
           </v-col>
@@ -187,67 +138,96 @@
     </v-card>
   </div>
 </template>
+
 <script>
-import {
-		getFrame,getColor,priceCalculate
-	} from '@/api/product.js';
-import axios, * as others from 'axios';
-    export default {
-        data: () => ({
-            productType: '',
-            unit:'',
-            framing:'',
-            surfaceTypeId:'',
-            stretch:'',
+import axios from 'axios';
 
-        }),
-          methods: {
-            onChange(e) {
-              const file = e.target.files[0]
-              this.image = file
-              this.imageUrl = URL.createObjectURL(file)
-            },
-            getColor(){
-            },
-            priceCal(){
-          axios({
-
-                                method: 'post',
-                                url: 'http://localhost:8085/product/priceCalculate',
-
-                                data: {
-                                    productType:this.productType,
-
-                                      "surfaceTypeId": this.surfaceTypeId,
-
-                                      "framing": this.framing,
-                                      "stretch": this.stretch,
-                                      "width": 8,
-                                      "height": 10,
-                                      "unit": this.unit
-
-                                },
-                                responseType: 'json'
-                            }).then(response => {
-
-                                _this.result = response.data.data.items
-                                _this.total = response.data.data.total
-                                console.log(response)
-                            }).catch(error => {
-
-                                console.log(error)
-                            });
-
-            }
-
-
-    }}
+export default {
+  data() {
+    return {
+      productType: '',
+      unit: '',
+      framing: '',
+      surfaceTypeId: '',
+      stretch: '',
+      height: '',
+      width: '',
+      cmSizes: ['5cm x 7cm', '6cm x 8cm', '8cm x 10cm'],
+      inchSizes: ['2in x 3in', '3in x 4in', '4in x 5in'],
+      imageUrl: '',
+      galleryDialog: false,
+      galleryItems: [
+        { imageUrl: 'url_to_gallery_image_1', price: '$10', height: 200, width: 200 },
+        { imageUrl: 'url_to_gallery_image_2', price: '$20', height: 250, width: 250 },
+        // 添加更多画廊图片信息
+      ],
+      selectedImage: null
+    };
+  },
+  methods: {
+    onChange(e) {
+      const file = e.target.files[0]
+      this.image = file
+      this.imageUrl = URL.createObjectURL(file)
+    },
+    setSize() {
+      const [lengthStr, widthStr] = this.selectedSize.split(' x ');
+      if (this.unit === 'cm') {
+        this.height = parseFloat(lengthStr);
+        this.width = parseFloat(widthStr);
+      } else {
+        this.height = parseFloat(lengthStr);
+        this.width = parseFloat(widthStr);
+      }
+    },
+    handleAddToCart() {
+      const cartData = {
+        quantity: "2",
+      };
+      const cartDataCopy = JSON.parse(JSON.stringify(cartData));
+      this.addToCartMutation(cartDataCopy);
+    },
+    priceCal() {
+      axios({
+        method: 'post',
+        url: 'http://localhost:8085/product/priceCalculate',
+        data: {
+          productType: this.productType,
+          "surfaceTypeId": this.surfaceTypeId,
+          "framing": this.framing,
+          "stretch": this.stretch,
+          "width": this.width,
+          "height": this.height,
+          "unit": this.unit
+        },
+        responseType: 'json'
+      }).then(response => {
+        _this.result = response.data.data.items
+        _this.total = response.data.data.total
+        console.log(response)
+      }).catch(error => {
+        console.log(error)
+      });
+    },
+    openGalleryDialog() {
+      this.galleryDialog = true;
+    },
+    closeGalleryDialog() {
+      this.galleryDialog = false;
+    },
+    selectImage(item) {
+      this.selectedImage = item;
+      this.imageUrl = item.imageUrl;
+      this.disableSizeChange();
+      this.closeGalleryDialog();
+    },
+    disableSizeChange() {
+      // 禁用尺寸变更的逻辑
+    }
+  }
+}
 </script>
 
-<style>
-
-.custom-select {
-    border: 1px solid #000000; /* 黑色边框 */
-
-}
+<style scoped>
+/* 这里添加你的样式 */
 </style>

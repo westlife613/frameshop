@@ -8,6 +8,7 @@ import Post from '@/components/Post'
 import Cart from '@/components/Cart'
 import Layout from '@/components/Layout'
 import Gallery from '@/components/Gallery'
+import Feature from '@/components/Feature'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
           path:'/gallery',
           component:Gallery,
           name: 'Gallery'
+        },
+        {
+          path:'/feature',
+          component:Feature,
+          name: 'Featured Products'
         }
 
       ]

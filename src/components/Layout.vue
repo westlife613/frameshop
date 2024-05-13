@@ -56,7 +56,10 @@
           <span>Eco&nbsp;policie</span>
         </v-btn>
         <v-btn href="/gallery">
-                  <span>Gallery</span>
+                          <span> Gallery </span>
+                        </v-btn>
+        <v-btn href="/feature">
+                  <span> Featured products</span>
                 </v-btn>
       </v-bottom-navigation>
     </v-content>
