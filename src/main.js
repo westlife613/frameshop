@@ -5,7 +5,7 @@ import vuetify from '@/plugins/vuetify' // path to vuetify export
 import Vuex from 'vuex'
 import App from './App'
 import router from './router'
-import eventBus from './eventBus'
+
 
 // import 'material-design-icons-iconfont/dist/material-design-icons.css'
 

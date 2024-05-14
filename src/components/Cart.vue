@@ -36,7 +36,7 @@ import {
 		generateOrder
 	} from '@/api/order.js';
 	import axios, * as others from 'axios';
-	import eventBus from '@/eventBus.js'
+
    export default {
      data() {
        return {
