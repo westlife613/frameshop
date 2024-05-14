@@ -141,7 +141,11 @@
 
 <script>
 import axios from 'axios';
+import {
+		getFrame,getColor,priceCalculate
+	} from '@/api/product.js';
 
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -164,6 +168,10 @@ export default {
       selectedImage: null
     };
   },
+  created() {
+              // 确保在组件创建后才访问 $store
+              this.addToCartMutation = this.handleAddToCart; // 将映射的方法指定给组件中的实际方法
+            },
   methods: {
     onChange(e) {
       const file = e.target.files[0]
