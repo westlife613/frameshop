@@ -187,6 +187,25 @@ export default {
       const cartDataCopy = JSON.parse(JSON.stringify(cartData));
       this.addToCartMutation(cartDataCopy);
     },
+    getFrame() {
+          axios.get('http://localhost:8085/product/getFrame')
+            .then(response => {
+              console.log(response.data);
+            })
+            .catch(error => {
+              console.error('Error fetching frame data:', error);
+            });
+        },
+
+    getColor() {
+          axios.get('http://localhost:8085/product/getColor')
+            .then(response => {
+              console.log(response.data);
+            })
+            .catch(error => {
+              console.error('Error fetching color data:', error);
+            });
+        },
     priceCal() {
       axios({
         method: 'post',
